@@ -1,4 +1,4 @@
-"""Preview or merge the eight locked upstream skills into a clean checkout."""
+"""Preview or merge the locked upstream skills into a clean checkout."""
 
 import argparse
 import json

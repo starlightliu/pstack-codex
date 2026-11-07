@@ -10,8 +10,9 @@ from urllib.parse import unquote, urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 PLUGIN = Path("plugins/pstack-codex")
 SKILLS = {
-    "benchmark-checklist", "blast-radius", "correct", "create-verification-skill",
-    "interrogate", "maintain-verification-skill", "show-me-your-work", "why",
+    "architect", "arena", "benchmark-checklist", "blast-radius", "correct", "create-verification-skill",
+    "how", "interrogate", "maintain-verification-skill", "reflect", "sharpen", "show-me-your-work",
+    "statechart", "teach", "technical-writing", "typescript-best-practices", "why",
 }
 AUTOMATIC = {"pt-blast-radius", "pt-benchmark-checklist"}
 
@@ -145,4 +146,4 @@ if __name__ == "__main__":
         validate(args.root.resolve(), args.matt_skills)
     except (OSError, ValueError, KeyError, IndexError, TypeError) as error:
         sys.exit(str(error))
-    print("Validated 8 skills, display names, resources, invocation policies, manifest, and marketplace.")
+    print(f"Validated {len(SKILLS)} skills, display names, resources, invocation policies, manifest, and marketplace.")

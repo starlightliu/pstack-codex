@@ -1,0 +1,5 @@
+interface:
+  display_name: "PS · reflect"
+
+policy:
+  allow_implicit_invocation: false

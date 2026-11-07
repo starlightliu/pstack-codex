@@ -1,0 +1,5 @@
+interface:
+  display_name: "PS · teach"
+
+policy:
+  allow_implicit_invocation: false

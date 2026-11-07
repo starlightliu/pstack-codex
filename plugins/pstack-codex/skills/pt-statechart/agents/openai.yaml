@@ -1,0 +1,5 @@
+interface:
+  display_name: "PS · statechart"
+
+policy:
+  allow_implicit_invocation: false

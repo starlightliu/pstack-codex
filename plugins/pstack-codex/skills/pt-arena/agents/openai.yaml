@@ -1,0 +1,5 @@
+interface:
+  display_name: "PS · arena"
+
+policy:
+  allow_implicit_invocation: false

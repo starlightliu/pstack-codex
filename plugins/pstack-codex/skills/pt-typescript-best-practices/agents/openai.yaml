@@ -1,0 +1,5 @@
+interface:
+  display_name: "PS · typescript-best-practices"
+
+policy:
+  allow_implicit_invocation: false
