@@ -14,7 +14,6 @@ SKILLS = {
     "how", "interrogate", "maintain-verification-skill", "reflect", "sharpen", "show-me-your-work",
     "statechart", "teach", "technical-writing", "typescript-best-practices", "unslop", "why",
 }
-AUTOMATIC = {"blast-radius", "benchmark-checklist"}
 
 
 def read_json(path):
@@ -92,9 +91,10 @@ def validate(root, matt_skills):
                 f"{name}: missing or invalid resource {resource}",
             )
         metadata = skill_dir / "agents/openai.yaml"
-        expected = f'interface:\n  display_name: "PS · {name}"'
-        if name not in AUTOMATIC:
-            expected += "\n\npolicy:\n  allow_implicit_invocation: false"
+        expected = (
+            f'interface:\n  display_name: "PS · {name}"\n\n'
+            "policy:\n  allow_implicit_invocation: false"
+        )
         expect(
             metadata.is_file() and metadata.read_text(encoding="utf-8").strip() == expected,
             f"{name}: invalid display name or invocation policy",

@@ -4,11 +4,11 @@
 
 | Skill | 用途与调用示例 | 触发 |
 | --- | --- | --- |
-| `blast-radius` | `$pstack-codex:blast-radius` 这个响应字段改名会影响哪些消费者？用真实代码验证关键假设。 | 明确的变更影响问题可自动触发 |
+| `blast-radius` | `$pstack-codex:blast-radius` 这个响应字段改名会影响哪些消费者？用真实代码验证关键假设。 | 手动 |
 | `create-verification-skill` | `$pstack-codex:create-verification-skill` 为本项目的 API 建一个验证 Skill，并跑通一条真实路径。 | 手动 |
 | `maintain-verification-skill` | `$pstack-codex:maintain-verification-skill` 审计现有验证 Skill，重跑功能并更新过时步骤。 | 手动 |
 | `why` | `$pstack-codex:why` 当初为什么要对 SKU 做大小写归一化？列出历史证据。 | 手动 |
-| `benchmark-checklist` | `$pstack-codex:benchmark-checklist` 这组导出基准能支持提速结论吗？ | 明确的基准或提速判断可自动触发 |
+| `benchmark-checklist` | `$pstack-codex:benchmark-checklist` 这组导出基准能支持提速结论吗？ | 手动 |
 | `show-me-your-work` | `$pstack-codex:show-me-your-work` 给这次运行写一份带验证证据的决策日志。 | 手动 |
 | `correct` | `$pstack-codex:correct` 针对两次重复的回归，提出可验证的项目内防护。 | 手动 |
 | `interrogate` | `$pstack-codex:interrogate` 对抗审查这份 diff，保留能复现的缺陷并报告审查模式。 | 手动 |
