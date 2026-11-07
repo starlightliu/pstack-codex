@@ -92,15 +92,14 @@ def validate(root, matt_skills):
                 and (skill_dir / path).is_file(),
                 f"{local}: missing or invalid resource {resource}",
             )
-        policy = skill_dir / "agents/openai.yaml"
+        metadata = skill_dir / "agents/openai.yaml"
+        expected = f'interface:\n  display_name: "PS · {name}"'
         if local not in AUTOMATIC:
-            expect(
-                policy.is_file() and policy.read_text(encoding="utf-8").strip()
-                == "policy:\n  allow_implicit_invocation: false",
-                f"{local}: missing explicit invocation policy",
-            )
-        else:
-            expect(not policy.exists(), f"{local}: unexpected invocation policy")
+            expected += "\n\npolicy:\n  allow_implicit_invocation: false"
+        expect(
+            metadata.is_file() and metadata.read_text(encoding="utf-8").strip() == expected,
+            f"{local}: invalid display name or invocation policy",
+        )
         for path in skill_dir.rglob("*.md"):
             check_links(root, path, expect)
 
@@ -146,4 +145,4 @@ if __name__ == "__main__":
         validate(args.root.resolve(), args.matt_skills)
     except (OSError, ValueError, KeyError, IndexError, TypeError) as error:
         sys.exit(str(error))
-    print("Validated 8 skills, resources, invocation policies, manifest, and marketplace.")
+    print("Validated 8 skills, display names, resources, invocation policies, manifest, and marketplace.")

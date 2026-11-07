@@ -1,2 +1,5 @@
+interface:
+  display_name: "PS · interrogate"
+
 policy:
   allow_implicit_invocation: false

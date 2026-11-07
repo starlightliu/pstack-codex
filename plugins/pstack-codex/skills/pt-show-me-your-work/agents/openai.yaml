@@ -1,2 +1,5 @@
+interface:
+  display_name: "PS · show-me-your-work"
+
 policy:
   allow_implicit_invocation: false

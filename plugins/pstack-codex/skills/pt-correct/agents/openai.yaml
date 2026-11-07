@@ -1,2 +1,5 @@
+interface:
+  display_name: "PS · correct"
+
 policy:
   allow_implicit_invocation: false
