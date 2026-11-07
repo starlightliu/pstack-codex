@@ -6,7 +6,7 @@
   "skills": {
     "architect": {
       "source": "pstack/skills/architect",
-      "target": "plugins/pstack-codex/skills/pt-architect",
+      "target": "plugins/pstack-codex/skills/architect",
       "files": [
         "SKILL.md",
         "references/design-red-flags.md",
@@ -16,35 +16,35 @@
     },
     "arena": {
       "source": "pstack/skills/arena",
-      "target": "plugins/pstack-codex/skills/pt-arena",
+      "target": "plugins/pstack-codex/skills/arena",
       "files": [
         "SKILL.md"
       ]
     },
     "benchmark-checklist": {
       "source": "pstack/skills/benchmark-checklist",
-      "target": "plugins/pstack-codex/skills/pt-benchmark-checklist",
+      "target": "plugins/pstack-codex/skills/benchmark-checklist",
       "files": [
         "SKILL.md"
       ]
     },
     "blast-radius": {
       "source": "pstack/skills/blast-radius",
-      "target": "plugins/pstack-codex/skills/pt-blast-radius",
+      "target": "plugins/pstack-codex/skills/blast-radius",
       "files": [
         "SKILL.md"
       ]
     },
     "correct": {
       "source": "pstack/skills/correct",
-      "target": "plugins/pstack-codex/skills/pt-correct",
+      "target": "plugins/pstack-codex/skills/correct",
       "files": [
         "SKILL.md"
       ]
     },
     "create-verification-skill": {
       "source": "pstack/skills/create-verification-skill",
-      "target": "plugins/pstack-codex/skills/pt-create-verification-skill",
+      "target": "plugins/pstack-codex/skills/create-verification-skill",
       "files": [
         "SKILL.md",
         "references/feature-map-example/README.md",
@@ -54,7 +54,7 @@
     },
     "how": {
       "source": "pstack/skills/how",
-      "target": "plugins/pstack-codex/skills/pt-how",
+      "target": "plugins/pstack-codex/skills/how",
       "files": [
         "SKILL.md",
         "references/explainer-prompt.md",
@@ -63,21 +63,21 @@
     },
     "interrogate": {
       "source": "pstack/skills/interrogate",
-      "target": "plugins/pstack-codex/skills/pt-interrogate",
+      "target": "plugins/pstack-codex/skills/interrogate",
       "files": [
         "SKILL.md"
       ]
     },
     "maintain-verification-skill": {
       "source": "pstack/skills/maintain-verification-skill",
-      "target": "plugins/pstack-codex/skills/pt-maintain-verification-skill",
+      "target": "plugins/pstack-codex/skills/maintain-verification-skill",
       "files": [
         "SKILL.md"
       ]
     },
     "reflect": {
       "source": "pstack/skills/reflect",
-      "target": "plugins/pstack-codex/skills/pt-reflect",
+      "target": "plugins/pstack-codex/skills/reflect",
       "files": [
         "SKILL.md",
         "references/divergent-reviewer.md",
@@ -88,14 +88,14 @@
     },
     "sharpen": {
       "source": "pstack/skills/sharpen",
-      "target": "plugins/pstack-codex/skills/pt-sharpen",
+      "target": "plugins/pstack-codex/skills/sharpen",
       "files": [
         "SKILL.md"
       ]
     },
     "show-me-your-work": {
       "source": "pstack/skills/show-me-your-work",
-      "target": "plugins/pstack-codex/skills/pt-show-me-your-work",
+      "target": "plugins/pstack-codex/skills/show-me-your-work",
       "files": [
         "SKILL.md",
         "references/decision-log-template.tsv",
@@ -104,7 +104,7 @@
     },
     "statechart": {
       "source": "pstack/skills/statechart",
-      "target": "plugins/pstack-codex/skills/pt-statechart",
+      "target": "plugins/pstack-codex/skills/statechart",
       "files": [
         "SKILL.md",
         "references/render.md",
@@ -517,29 +517,36 @@
     },
     "teach": {
       "source": "pstack/skills/teach",
-      "target": "plugins/pstack-codex/skills/pt-teach",
+      "target": "plugins/pstack-codex/skills/teach",
       "files": [
         "SKILL.md"
       ]
     },
     "technical-writing": {
       "source": "pstack/skills/technical-writing",
-      "target": "plugins/pstack-codex/skills/pt-technical-writing",
+      "target": "plugins/pstack-codex/skills/technical-writing",
       "files": [
         "SKILL.md"
       ]
     },
     "typescript-best-practices": {
       "source": "pstack/skills/typescript-best-practices",
-      "target": "plugins/pstack-codex/skills/pt-typescript-best-practices",
+      "target": "plugins/pstack-codex/skills/typescript-best-practices",
       "files": [
         "SKILL.md",
         "references/patterns.md"
       ]
     },
+    "unslop": {
+      "source": "pstack/skills/unslop",
+      "target": "plugins/pstack-codex/skills/unslop",
+      "files": [
+        "SKILL.md"
+      ]
+    },
     "why": {
       "source": "pstack/skills/why",
-      "target": "plugins/pstack-codex/skills/pt-why",
+      "target": "plugins/pstack-codex/skills/why",
       "files": [
         "SKILL.md",
         "references/epistemics.md",

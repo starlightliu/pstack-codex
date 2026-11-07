@@ -12,9 +12,9 @@ PLUGIN = Path("plugins/pstack-codex")
 SKILLS = {
     "architect", "arena", "benchmark-checklist", "blast-radius", "correct", "create-verification-skill",
     "how", "interrogate", "maintain-verification-skill", "reflect", "sharpen", "show-me-your-work",
-    "statechart", "teach", "technical-writing", "typescript-best-practices", "why",
+    "statechart", "teach", "technical-writing", "typescript-best-practices", "unslop", "why",
 }
-AUTOMATIC = {"pt-blast-radius", "pt-benchmark-checklist"}
+AUTOMATIC = {"blast-radius", "benchmark-checklist"}
 
 
 def read_json(path):
@@ -72,41 +72,39 @@ def validate(root, matt_skills):
     expect(set(lock["skills"]) == SKILLS, "Unexpected upstream skill set")
     expect((root / "LICENSE").is_file(), "Missing upstream license")
     skills_dir = root / PLUGIN / "skills"
-    names = {f"pt-{name}" for name in SKILLS}
-    expect({p.name for p in skills_dir.iterdir() if p.is_dir()} == names, "Unexpected plugin skill set")
+    expect({p.name for p in skills_dir.iterdir() if p.is_dir()} == SKILLS, "Unexpected plugin skill set")
 
     for name, entry in lock["skills"].items():
-        local = f"pt-{name}"
         expect(entry["source"] == f"pstack/skills/{name}", f"{name}: invalid source path")
-        expect(entry["target"] == (PLUGIN / "skills" / local).as_posix(), f"{name}: invalid target path")
-        skill_dir = skills_dir / local
+        expect(entry["target"] == (PLUGIN / "skills" / name).as_posix(), f"{name}: invalid target path")
+        skill_dir = skills_dir / name
         fields = frontmatter(skill_dir / "SKILL.md")
-        expect(fields.get("name") == local, f"{local}: invalid or duplicate name")
+        expect(fields.get("name") == name, f"{name}: invalid or duplicate name")
         description = fields.get("description")
-        expect(isinstance(description, str) and bool(description.strip()), f"{local}: missing description")
+        expect(isinstance(description, str) and bool(description.strip()), f"{name}: missing description")
         resources = entry["files"]
-        expect("SKILL.md" in resources and resources == sorted(set(resources)), f"{local}: invalid inventory")
+        expect("SKILL.md" in resources and resources == sorted(set(resources)), f"{name}: invalid inventory")
         for resource in resources:
             path = PurePosixPath(resource)
             expect(
                 not path.is_absolute() and ".." not in path.parts and "\\" not in resource
                 and (skill_dir / path).is_file(),
-                f"{local}: missing or invalid resource {resource}",
+                f"{name}: missing or invalid resource {resource}",
             )
         metadata = skill_dir / "agents/openai.yaml"
         expected = f'interface:\n  display_name: "PS · {name}"'
-        if local not in AUTOMATIC:
+        if name not in AUTOMATIC:
             expected += "\n\npolicy:\n  allow_implicit_invocation: false"
         expect(
             metadata.is_file() and metadata.read_text(encoding="utf-8").strip() == expected,
-            f"{local}: invalid display name or invocation policy",
+            f"{name}: invalid display name or invocation policy",
         )
         for path in skill_dir.rglob("*.md"):
             check_links(root, path, expect)
 
-    # Matt's package declares mp- names. Optionally check the actual installed or cloned tree.
+    # Short names can overlap across plugins. Report where a qualified mention matters.
     if matt_skills:
-        files = list(matt_skills.glob("*/SKILL.md"))
+        files = list(matt_skills.rglob("SKILL.md"))
         expect(bool(files), f"No Matt skills in {matt_skills}")
         matt_names = set()
         for path in files:
@@ -115,9 +113,9 @@ def validate(root, matt_skills):
             expect(bool(match), f"Missing Matt skill name in {path}")
             if match:
                 matt_names.add(match[1])
-        expect(not names & matt_names, "Skill name collision with Matt")
-    else:
-        expect(all(name.startswith("pt-") for name in names), "Skill outside the pt- namespace")
+        shared = SKILLS & matt_names
+        if shared:
+            print(f"Shared short names with Matt: {', '.join(sorted(shared))}. Use plugin-qualified names.")
 
     manifest = read_json(root / PLUGIN / ".codex-plugin/plugin.json")
     marketplace = read_json(root / ".agents/plugins/marketplace.json")
@@ -140,7 +138,7 @@ def validate(root, matt_skills):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=ROOT, help="Repository to check")
-    parser.add_argument("--matt-skills", type=Path, help="Matt plugin's skills directory to check for collisions")
+    parser.add_argument("--matt-skills", type=Path, help="Matt plugin's skills directory to check for shared short names")
     args = parser.parse_args()
     try:
         validate(args.root.resolve(), args.matt_skills)

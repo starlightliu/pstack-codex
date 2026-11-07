@@ -54,9 +54,11 @@ def test_sync(source):
         clean = commit(upstream, "Extend the benchmark checklist")
         extra.write_text("[Missing](missing.md)\n", encoding="utf-8", newline="\n")
         invalid = commit(upstream, "Add a broken link")
-        entry.write_text(entry.read_text(encoding="utf-8").replace("name: benchmark-checklist", "name: renamed"),
+        text = entry.read_text(encoding="utf-8")
+        upstream_description = next(line for line in text.splitlines() if line.startswith("description: "))
+        entry.write_text(text.replace(upstream_description, 'description: "Conflicting upstream description."', 1),
                          encoding="utf-8", newline="\n")
-        conflict = commit(upstream, "Rename the skill in its header")
+        conflict = commit(upstream, "Change the description adapted by Codex")
 
         local = scratch / "local"
         git(ROOT, "clone", "-q", "--no-hardlinks", ROOT.as_posix(), local.as_posix())
@@ -90,7 +92,10 @@ def test_sync(source):
         assert status == 0, output[-2000:]
         merged = local / skill["target"] / "SKILL.md"
         text = merged.read_text(encoding="utf-8")
-        assert "name: pt-benchmark-checklist" in text and "An upstream addition." in text
+        original = (ROOT / skill["target"] / "SKILL.md").read_text(encoding="utf-8")
+        local_description = next(line for line in original.splitlines() if line.startswith("description: "))
+        assert "name: benchmark-checklist" in text and "An upstream addition." in text
+        assert local_description in text.splitlines()
         assert merged.with_name("extra.md").is_file()
         assert json.loads(lock_path.read_text(encoding="utf-8"))["commit"] == clean
         assert not git(local, "diff", "--name-only")
