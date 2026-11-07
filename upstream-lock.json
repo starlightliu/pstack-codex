@@ -1,0 +1,81 @@
+{
+  "repository": "https://github.com/cursor/plugins.git",
+  "ref": "HEAD",
+  "commit": "6b0300214a09fd6029cfb7077043125758cd1fd2",
+  "license": "pstack/LICENSE",
+  "skills": {
+    "benchmark-checklist": {
+      "source": "pstack/skills/benchmark-checklist",
+      "target": "plugins/pstack-codex/skills/pt-benchmark-checklist",
+      "files": [
+        "SKILL.md"
+      ]
+    },
+    "blast-radius": {
+      "source": "pstack/skills/blast-radius",
+      "target": "plugins/pstack-codex/skills/pt-blast-radius",
+      "files": [
+        "SKILL.md"
+      ]
+    },
+    "correct": {
+      "source": "pstack/skills/correct",
+      "target": "plugins/pstack-codex/skills/pt-correct",
+      "files": [
+        "SKILL.md"
+      ]
+    },
+    "create-verification-skill": {
+      "source": "pstack/skills/create-verification-skill",
+      "target": "plugins/pstack-codex/skills/pt-create-verification-skill",
+      "files": [
+        "SKILL.md",
+        "references/feature-map-example/README.md",
+        "references/feature-map-example/create-note.md",
+        "references/feature-map-example/search.md"
+      ]
+    },
+    "interrogate": {
+      "source": "pstack/skills/interrogate",
+      "target": "plugins/pstack-codex/skills/pt-interrogate",
+      "files": [
+        "SKILL.md"
+      ]
+    },
+    "maintain-verification-skill": {
+      "source": "pstack/skills/maintain-verification-skill",
+      "target": "plugins/pstack-codex/skills/pt-maintain-verification-skill",
+      "files": [
+        "SKILL.md"
+      ]
+    },
+    "show-me-your-work": {
+      "source": "pstack/skills/show-me-your-work",
+      "target": "plugins/pstack-codex/skills/pt-show-me-your-work",
+      "files": [
+        "SKILL.md",
+        "references/decision-log-template.tsv",
+        "scripts/log.sh"
+      ]
+    },
+    "why": {
+      "source": "pstack/skills/why",
+      "target": "plugins/pstack-codex/skills/pt-why",
+      "files": [
+        "SKILL.md",
+        "references/epistemics.md",
+        "references/investigator-prompt.md",
+        "references/source-playbook.md",
+        "references/sources/code-archaeology.md",
+        "references/sources/databricks.md",
+        "references/sources/datadog.md",
+        "references/sources/incident-postmortem.md",
+        "references/sources/linear.md",
+        "references/sources/notion.md",
+        "references/sources/sentry.md",
+        "references/sources/slack.md",
+        "references/synthesizer-prompt.md"
+      ]
+    }
+  }
+}

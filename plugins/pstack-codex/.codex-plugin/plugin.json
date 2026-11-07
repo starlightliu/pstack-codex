@@ -1,0 +1,12 @@
+{
+  "name": "pstack-codex",
+  "version": "0.1.0",
+  "description": "Eight pstack workflows for evidence-driven engineering in Codex.",
+  "license": "MIT",
+  "repository": "https://github.com/starlightliu/pstack-codex",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Pstack for Codex",
+    "category": "Coding"
+  }
+}
